@@ -1,0 +1,85 @@
+<view class="container">
+  <!-- Header Container -->
+  <view class="user-container">
+    <image mode="aspectFill" src="{{user.avatar || 'https://media.ifanrusercontent.com/tavatar/bf/a0/bfa06f61621ea22d2328cc9d380f7ff1ab7b8844.jpg'}}"/>
+      <view>
+        <view class="header">{{user.details.name}}</view>
+        <view class="subtitle">Member since {{user.details.start_date}}</view>
+      </view>
+  </view>
+  
+  <!-- Tabs -->
+  <view class="tab-container">
+    <view class="tab subheader {{active == 0 ? 'active' : ''}}" data-index="0" bindtap="switchTab">Contact</view>
+    <view class="tab subheader {{active == 1 ? 'active' : ''}}" data-index="1" bindtap="switchTab">Professional</view>
+    <view class="tab subheader {{active == 2 ? 'active' : ''}}" data-index="2" bindtap="switchTab">Additional</view>
+  </view>
+
+  <!-- Contact Information -->
+  <block wx:if="{{active == 0}}">
+    <view class="input-group">
+      <view class="name">Name</view>
+      <input name="name" value="{{user.details.name}}" data-name="name" bindinput="inputChange" placeholder-class="placeholder" confirm-type="done" placeholder="Jan the Man"/>
+    </view>
+    <view class="input-group">
+      <view class="name">Country</view>
+      <input name="country" value="{{user.details.country}}" bindinput="inputChange" data-name="country" placeholder-class="placeholder" confirm-type="done" placeholder="China"/>
+    </view>
+    <view class="input-group">
+      <view class="name">City</view>
+      <input name="city" value="{{user.details.city}}" bindinput="inputChange" data-name="city" placeholder-class="placeholder" confirm-type="done" placeholder="Shenzhen"/>
+    </view>
+    <view class="input-group">
+      <view class="name">Email</view>
+      <input name="email" value="{{user.details.email}}" bindinput="inputChange" data-name="email" placeholder-class="placeholder" confirm-type="done" placeholder="team@thedaonetwork.com"/>
+    </view>
+    <view class="input-group">
+      <view class="name">WeChat ID</view>
+      <input name="wechat" value="{{user.details.wechat}}" bindinput="inputChange" data-name="wechat" placeholder-class="placeholder" confirm-type="done" placeholder="thedaonetwork"/>
+    </view>
+  </block>
+
+  <!-- Professional Information -->
+  <block wx:if="{{active == 1}}">
+    <view class="input-group">
+      <view class="name">Company</view>
+      <input value="{{user.details.company}}" data-name="company" bindinput="inputChange" placeholder-class="placeholder" confirm-type="done" placeholder="Alibaba Group"/>
+    </view>
+    <view class="input-group">
+      <view class="name">Role</view>
+      <input value="{{user.details.role}}" data-name="role" bindinput="inputChange" placeholder-class="placeholder" confirm-type="done" placeholder="SVP International Business"/>
+    </view>
+    <view class="input-group">
+      <view class="name">Brief Bio</view>
+      <textarea name="country" value="{{user.details.bio}}" bindinput="inputChange" maxlength="250" data-name="bio" placeholder-class="placeholder" confirm-type="done" placeholder="Limit to 250 characters..."/>
+    </view>
+  </block>
+  
+  <!-- Additional Information -->
+  <block wx:if="{{active == 2}}">
+    <view class="input-group">
+      <view class="name">Your goal for joining this community</view>
+      <picker bindchange="pickerChange" data-name="goal" data-index="0" range="{{pickers[0].array}}">
+        <view class="picker">{{pickers[0].array[pickers[0].index]}}</view>
+      </picker>
+    </view>
+    <view class="input-group">
+      <view class="name">How often do you listen to our podcast?</view>
+      <picker bindchange="pickerChange" data-name="engagement" data-index="1" range="{{pickers[1].array}}">
+        <view class="picker">{{pickers[1].array[pickers[1].index]}}</view>
+      </picker>
+    </view>
+    <view class="input-group">
+      <view class="name">Want to be matched with other members?</view>
+      <picker bindchange="pickerChange" data-name="networking" data-index="2" range="{{pickers[2].array}}">
+        <view class="picker">{{pickers[2].array[pickers[2].index]}}</view>
+      </picker>
+    </view>
+  </block>
+
+  <!-- Buttons -->
+  <view class="btn-container">
+    <view class="btn btn-secondary">Home</view>
+    <view class="btn btn-primary">Submit</view>
+  </view>
+</view>

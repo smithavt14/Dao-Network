@@ -1,0 +1,76 @@
+<view class="container">
+  <view class="header">{{content[step].title}}</view>
+  <view class="body">{{content[step].subtitle}}</view>
+  
+    <!-- Contact Info -->
+    <block wx:if="{{step === 0}}">
+      <view class="input-group">
+        <view class="name">Name</view>
+        <input name="name" value="{{details.name}}" data-name="name" bindinput="inputChange" placeholder-class="placeholder" confirm-type="done" placeholder="Jan the Man"/>
+      </view>
+      <view class="input-group">
+        <view class="name">Country</view>
+        <input name="country" value="{{details.country}}" bindinput="inputChange" data-name="country" placeholder-class="placeholder" confirm-type="done" placeholder="China"/>
+      </view>
+      <view class="input-group">
+        <view class="name">City</view>
+        <input name="city" value="{{details.city}}" bindinput="inputChange" data-name="city" placeholder-class="placeholder" confirm-type="done" placeholder="Shenzhen"/>
+      </view>
+      <view class="input-group">
+        <view class="name">Email</view>
+        <input name="email" value="{{details.email}}" bindinput="inputChange" data-name="email" placeholder-class="placeholder" confirm-type="done" placeholder="team@thedaonetwork.com"/>
+      </view>
+      <view class="input-group">
+        <view class="name">WeChat ID</view>
+        <input name="wechat" value="{{details.wechat}}" bindinput="inputChange" data-name="wechat" placeholder-class="placeholder" confirm-type="done" placeholder="thedaonetwork"/>
+      </view>
+    </block>
+
+    <!-- Professional Information -->
+    <block wx:if="{{step === 1}}">
+      <view class="input-group">
+        <view class="name">Company</view>
+        <input value="{{details.company}}" data-name="company" bindinput="inputChange" placeholder-class="placeholder" confirm-type="done" placeholder="Alibaba Group"/>
+      </view>
+      <view class="input-group">
+        <view class="name">Role</view>
+        <input value="{{details.role}}" data-name="role" bindinput="inputChange" placeholder-class="placeholder" confirm-type="done" placeholder="SVP International Business"/>
+      </view>
+      <view class="input-group">
+        <view class="name">Brief Bio</view>
+        <textarea name="country" value="{{details.bio}}" bindinput="inputChange" maxlength="250" data-name="bio" placeholder-class="placeholder" confirm-type="done" placeholder="Limit to 250 characters..."/>
+      </view>
+    </block>
+    
+    <!-- Additional Information -->
+    <block wx:if="{{step === 2}}">
+      <view class="input-group">
+        <view class="name">Your goal for joining this community</view>
+        <picker bindchange="pickerChange" data-name="goal" data-index="0" range="{{pickers[0].array}}">
+          <view class="picker">{{pickers[0].array[pickers[0].index]}}</view>
+        </picker>
+      </view>
+      <view class="input-group">
+        <view class="name">How often do you listen to our podcast?</view>
+        <picker bindchange="pickerChange" data-name="engagement" data-index="1" range="{{pickers[1].array}}">
+          <view class="picker">{{pickers[1].array[pickers[1].index]}}</view>
+        </picker>
+      </view>
+      <view class="input-group">
+        <view class="name">Want to be matched with other members?</view>
+        <picker bindchange="pickerChange" data-name="networking" data-index="2" range="{{pickers[2].array}}">
+          <view class="picker">{{pickers[2].array[pickers[2].index]}}</view>
+        </picker>
+      </view>
+    </block>
+
+    <!-- Step Indicator -->
+    <view class="step-text">Step {{step + 1}} / 3</view>
+
+    <!-- Button Container -->
+    <view class="btn-container">
+      <view wx:if="{{ step === 1 || step === 2 }}" class="btn btn-secondary" bindtap="navigateBack">Back</view>
+      <view wx:if="{{ step === 0 || step === 1 }}" class="btn btn-primary" bindtap="navigateForward">Next</view>
+      <view wx:if="{{ step === 2 }}" class="btn btn-primary" bindtap="submitSurvey">Submit</view>
+    </view>
+</view>

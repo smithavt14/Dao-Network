@@ -1,0 +1,12 @@
+{
+  "pages":[
+    "pages/index/index", 
+    "pages/survey/survey", 
+    "pages/user/user"
+  ],
+  "window":{
+    "navigationStyle": "custom"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}
