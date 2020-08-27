@@ -39,7 +39,8 @@ Page({
   onShareAppMessage: function () {
     return {
       title: "Join Our Community!", 
-      path: "../index/index"
+      path: "pages/index/index",
+      imageUrl: "https://cloud-minapp-36992.cloud.ifanrusercontent.com/1kBJYQRHwONRB373.png"
     }
   }
 })

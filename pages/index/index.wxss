@@ -19,10 +19,11 @@
 .index__background {
   height: 720rpx;
   opacity: .2;
+  width: 90%;
   position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
+  top: 25vh;
+  animation: rotate 60s ease infinite;
+  z-index: -10;
 }
 
 .body {
@@ -31,3 +32,7 @@
   line-height: 56rpx;
 }
 
+@keyframes rotate {
+0% { transform: rotate(0deg) }
+100% { transform: rotate(360deg) }
+}

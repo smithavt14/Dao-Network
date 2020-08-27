@@ -76,6 +76,12 @@
         <view class="picker">{{pickers[2].array[pickers[2].index] || member.networking }}</view>
       </picker>
     </view>
+    <view class="input-group">
+      <view class="name">How do you define yourself?</view>
+      <picker bindchange="pickerChange" data-name="tag" data-index="3" range="{{pickers[3].array}}">
+        <view class="picker">{{pickers[3].array[pickers[3].index] || member.tag}}</view>
+      </picker>
+    </view>
   </view>
 </view>
 

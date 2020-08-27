@@ -16,7 +16,10 @@ Page({
       networking: null
     },
     step: 0,
-    content: [{title: 'Contact Information', subtitle: "Let's collect some information so we can introduce you to the community!"}, {title: 'Professional Information', subtitle: 'What do you do? Tell us more.'}, {title: 'Additional Information', subtitle: 'Finally, just a few more questions to finish up.'}],
+    content: [
+      {title: 'Contact Information', subtitle: "Let's collect some information so we can introduce you to the community!"}, 
+      {title: 'Professional Information', subtitle: 'What do you do? Tell us more.'}, 
+      {title: 'Additional Information', subtitle: 'Finally, just a few more questions to finish up.'}],
     pickers: [
       {
         index: undefined,
@@ -29,6 +32,10 @@ Page({
       {
         index: undefined,
         array: ['Yes', 'No', 'Maybe, tell me more']
+      },
+      {
+        index: undefined,
+        array: ['Student', 'Entrepreneur', 'Executive', 'VC', 'Other']
       }
     ]
   },

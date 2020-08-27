@@ -17,6 +17,10 @@ Page({
       {
         index: undefined,
         array: ['Yes', 'No', 'Maybe, tell me more']
+      },
+      {
+        index: undefined,
+        array: ['Student', 'Entrepreneur', 'Executive', 'VC', 'Other']
       }
     ]
   },
