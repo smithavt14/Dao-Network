@@ -26,7 +26,6 @@
 .input-group .picker {
   display: flex;
   align-items: center;
-  opacity: .5;
 }
 
 .input-group textarea {
@@ -44,8 +43,6 @@
 .step-text {
   font-family: 'LF Thin';
   font-size: 32rpx;
-  position: absolute;
   text-align: center;
-  bottom: 200rpx;
-  width: calc(100% - 64rpx);
+  width: 100%;
 }

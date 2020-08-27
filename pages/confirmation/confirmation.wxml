@@ -1,0 +1,8 @@
+<view class="container">
+  <view class="header">Thank You!</view>
+  <view class="body">Our team will be in contact with you shortly, if you have any conditional questions, you can reach out to Jan or JC at the email below.</view>
+  <view class="callout" bindtap="copyToClipboard">TEAM@THEDAONETWORK.COM</view>
+</view>
+<view class="btn-container">
+  <view class="btn btn-primary" bindtap="navigateToUser">My User Page</view>
+</view>

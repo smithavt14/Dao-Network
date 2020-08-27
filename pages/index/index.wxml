@@ -1,14 +1,18 @@
 <view class="container">
-  <view class="title">the dao network</view>
-  <view class="subtitle">COMMUNITY</view>
-
+  <!-- SVG background image -->
   <image src="../../assets/circle.svg" class="index__background"/>
+  
+  <view>
+    <view class="title">the dao network</view>
+    <view class="subtitle">COMMUNITY</view>
+  </view>
 
-  <view class="body">Educating, empowering and connecting the next generation of entrepreneurs and venture builders with global ambitions.\n\n Join us and gain access to: \n\n - Curated Introductions\n- Unique content and insights\n- Events, and more!</view>
+  <view class="body">Educating, empowering, and connecting the next generation of entrepreneurs and venture builders with global ambitions.</view>
   
   <view class="callout">by #YourChinaGuy & JC XU</view>
-  
-  <view class="btn-container">
-    <view class="btn btn-primary" bindtap="navigateToSurvey">Start Here</view>
-  </view>
+</view>
+
+<view class="btn-container">
+  <view wx:if="{{ member }}" class="btn btn-primary" bindtap="navigateToUser">My User Page</view>
+  <view wx:else class="btn btn-primary" bindtap="navigateToSurvey">Start Here</view>
 </view>

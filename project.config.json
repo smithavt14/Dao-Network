@@ -27,12 +27,12 @@
 			"outputPath": ""
 		},
 		"useIsolateContext": true,
-		"useCompilerModule": false,
+		"useCompilerModule": true,
 		"userConfirmedUseCompilerModuleSwitch": false
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.12.1",
-	"appid": "wx00362798f0f6d6d6",
+	"appid": "wx1106958f265a7206",
 	"projectname": "Dao%20Network",
 	"debugOptions": {
 		"hidedInDevtools": []
@@ -76,6 +76,13 @@
 					"id": -1,
 					"name": "pages/user/user",
 					"pathName": "pages/user/user",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/confirmation/confirmation",
+					"pathName": "pages/confirmation/confirmation",
 					"scene": null
 				}
 			]

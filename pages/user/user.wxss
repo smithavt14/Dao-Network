@@ -1,3 +1,12 @@
+.container {
+  display: block;
+  padding-bottom: 0;
+}
+
+.subtitle {
+  font-size: 32rpx;
+}
+
 .user-container {
   display: flex;
   align-items: center;
@@ -53,7 +62,6 @@
 .input-group .picker {
   display: flex;
   align-items: center;
-  opacity: .5;
 }
 
 .input-group textarea {

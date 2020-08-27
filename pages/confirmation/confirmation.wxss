@@ -1,0 +1,17 @@
+.container {
+  justify-content: center;
+  text-align: center;
+}
+
+.header {
+  margin-bottom: 40rpx;
+}
+
+.callout {
+  width: 100%;
+}
+
+.body {
+  font-family: 'LF Thin';
+  line-height: 48rpx;
+}

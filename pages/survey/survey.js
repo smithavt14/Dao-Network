@@ -15,22 +15,19 @@ Page({
       engagement: null,
       networking: null
     },
-    
     step: 0,
-    
-    content: [{title: 'Contact Information', subtitle: "Let's collect some information so we can introduce you to the community!"}, {title: 'Professional Information'}, {title: 'Additional Information'}],
-    
+    content: [{title: 'Contact Information', subtitle: "Let's collect some information so we can introduce you to the community!"}, {title: 'Professional Information', subtitle: 'What do you do? Tell us more.'}, {title: 'Additional Information', subtitle: 'Finally, just a few more questions to finish up.'}],
     pickers: [
       {
-        index: 0,
+        index: undefined,
         array: ['I want to meet a co-founder', 'I want to expand my network', 'I want to meet investors', 'I want to meet startups']
       },
       {
-        index: 0,
+        index: undefined,
         array: ['All the time', 'Sometimes', 'Never']
       },
       {
-        index: 0,
+        index: undefined,
         array: ['Yes', 'No', 'Maybe, tell me more']
       }
     ]
@@ -61,7 +58,11 @@ Page({
     let details = this.data.details;
     for (const key in details) {
       if (!details[key]) {
-        wx.showModal({title: 'Missing Field', content: `Almost there, please fill in the "${key}" field before submitting`, showCancel: false});
+        wx.showModal({
+          title: 'Missing Field', 
+          content: `Almost there, please fill in the "${key}" field before submitting`, 
+          showCancel: false
+        });
         return false;
       }
     }
@@ -73,13 +74,72 @@ Page({
     
     if (validate) {
       let details = this.data.details;
-      
-      // --- Send Details to Backend --- //
-      wx.setStorageSync('details', details);
-      wx.redirectTo({
-        url: '../'
+      this.createMember(details);
+    }
+  },
+
+  createMember: async function (details) {
+    wx.showLoading({title: 'Working...'});
+    let user = this.data.user;
+    details['user'] = user.id;
+
+    let Member = new wx.BaaS.TableObject('member');
+    
+    let existingMember = await this.doesMemberExist();
+
+    if (existingMember) {
+      wx.hideLoading();
+      wx.showModal({
+        title: 'Existing Member', 
+        content: "Looks like you're already a member, do you want to overwrite your existing information or navigate to your user page?",
+        cancelText: 'User',
+        confirmText: 'OK',
+        success (res) {
+          if (res.confirm) {
+            let member = Member.getWithoutData(existingMember.id);
+            member.set(details).update().then(res => {
+              wx.setStorageSync('member', res.data);
+              wx.redirectTo({ 
+                url: '../user/user',
+                success () {
+                  wx.showToast({title: 'Updated!'})
+                }
+              });
+            })
+          } else if (res.cancel) {
+            wx.redirectTo({ url: '../user/user' }) 
+          }
+        }
+      })
+    } else {
+      let member = Member.create();
+      member.set(details).save().then(res => {
+        wx.hideLoading();
+        wx.setStorageSync('member', res.data);
+        wx.redirectTo({ 
+          url: '../confirmation/confirmation',
+          success () {
+            wx.showToast({title: 'Created!'})
+          }
+        })
       })
     }
+  },
+
+  doesMemberExist: function () {
+    return new Promise(resolve => {
+      let user = this.data.user;
+    
+      let Member = new wx.BaaS.TableObject('member');
+      let query = new wx.BaaS.Query();
+  
+      query.compare('user', '=', user.id);
+  
+      Member.setQuery(query).find().then(res => {
+        let member = res.data.objects[0];
+        resolve(member);
+      })
+    })
   },
 
   navigateBack: function () {
@@ -100,6 +160,7 @@ Page({
   },
 
   onLoad: function () {
+    this.setData({ user: wx.getStorageSync('user') });
     getFonts();
   }
 })
