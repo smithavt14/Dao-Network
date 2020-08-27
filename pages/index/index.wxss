@@ -4,16 +4,16 @@
 
 .subtitle {
   text-align: right;
-  margin-bottom: 160rpx;
+  margin-right: 56rpx;
 }
 
 .subtitle::after {
   content: "";
   height: 40rpx;
-  width: 32rpx;
+  width: 48rpx;
   background: #FFDE59;
   position: absolute; 
-  right: 0;
+  margin-left: 8rpx;
 }
 
 .index__background {
